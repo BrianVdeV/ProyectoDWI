@@ -5,7 +5,7 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Cursos | Heroes del Peru</title>
+        <title>Estudiantes | Heroes del Peru</title>
         <meta charset="UTF-8"></meta>
     </h:head>
     <h:body style="padding-top: 60px">
@@ -28,53 +28,40 @@
                             <b:navCommandLink action="matriculas" value="Matriculas"/>
                             <b:navCommandLink action="horarios" value="Horarios" />
                             <b:navCommandLink action="salones" value="Salones" />
-                            <b:navCommandLink action="cursos" value="Cursos" active="true"/>
+                            <b:navCommandLink action="cursos" value="Cursos"/>
                         </b:listLinks>
                         <b:listLinks>
                             <b:navLink header="Gestionar" />
-                            <b:navCommandLink action="estudiantes" value="Estudiantes" />
+                            <b:navCommandLink action="estudiantes" value="Estudiantes" active="true" />
                             <b:navCommandLink action="docentes" value="Docentes" />
                             <b:navCommandLink action="equipo" value="Equipo" />
                         </b:listLinks>
                     </b:form>
                 </b:column>
                 <b:column col-sm="9" offset-sm="3" col-md="10" offset="2" styleClass="main">
-                    <h1>Cursos</h1>
+                    <h1>Estudiantes</h1>
                     <hr/>
-                    <button id="btrigger" class="btn btn-primary" data-target="#addModal" data-toggle="modal">Agregar curso</button>
-                    <b:row styleClass="table-responsive">
-                        <b:form>
-                            <b:dataTable styleClass="table table-striped" value="#{beanCurso.ListaCursos()}" var="curso">
-                                <b:dataTableColumn value="#{curso.id_curso}" label="ID"/>
-                                <b:dataTableColumn value="#{curso.nombre}" label="Nombre"/>
-                                <b:dataTableColumn value="#{curso.anio}" label="Año"/>
-                                <b:dataTableColumn value="#{curso.horas}" label="Horas"/>
-                                <b:dataTableColumn label="ACCIONES" width="180px">
-                                    <b:commandButton value="Editar" look="success" style="width:80px; align-content: center;"
-                      actionListener="#{beanCurso.editarCurso(curso)}" action="../Editar/cursos.xhtml"/>
-                    <b:commandButton value="Eliminar" look="danger" style="width:80px; align-content: center;"
-                                     actionListener="#{beanCurso.eliminarCurso(curso.getId_curso())}"/>
-                                </b:dataTableColumn>
-                            </b:dataTable>
-                        </b:form>
-                    </b:row>
+                    <b:form id="forma" style="padding-left: 50px;">
+                        <br/>
+                        <b:panel style="width: 550px;" title="Actualizar Estudiante" look="success">
+                            <b:panelGrid columns="1" size="xs">
+                                <b:inputText id="id" value="#{beanEstudiante.car.id_estudiante}" label="ID" disabled="true"/>
+                                <b:inputText id="apellido" value="#{beanEstudiante.car.apellido}" label="Apellido"/>
+                                <b:inputText id="nombre" value="#{beanEstudiante.car.nombre}" label="Nombre"
+                                             required="true" requiredMessage="El nombre es obligatorio"/>
+                                <b:inputText id="dni" value="#{beanEstudiante.car.dni}" label="DNI"/>
+                                <b:inputText id="sexo" value="#{beanEstudiante.car.sexo}" label="Sexo"/>
+                                <b:inputText id="fecha" value="#{beanEstudiante.car.fecha}" label="Fecha"/>
+                                <b:inputText id="responsable" value="#{beanEstudiante.car.responsable}" label="Responsable"/>
+                            </b:panelGrid>  
+                            <br/>
+                            <b:commandButton value="Actualizar" look="success"
+                                             actionListener="#{beanEstudiante.actualizarEstudiante()}" action="../Vistas/estudiantes.xhtml"/>
+                        </b:panel>
+                    </b:form>
                 </b:column>
             </b:row>
         </b:container>
-        <b:modal id="addModal" title="Agregar Curso">
-            <b:form id="addForm">
-                <br/>
-                <b:message for="@previous"/>
-                <b:inputText id="nomcur" value="#{beanCurso.car.nombre}" label="Nombre"
-                             required="true" requiredMessage="El nombre es obligatorio"/>
-                <b:message for="@previous"/>
-                <b:inputText id="sumin" value="#{beanCurso.car.anio}" label="Año"/>
-                <b:inputText id="sumax" value="#{beanCurso.car.horas}" label="Horas"/>
-                <br/>
-                <b:commandButton value="Registrar" look="primary"
-                                 actionListener="#{beanCurso.agregarCurso()}" action="cursos"/>
-            </b:form>
-        </b:modal>
         <style type="text/css">
             .sub-header {
                 border-bottom: 1px solid #eee;
