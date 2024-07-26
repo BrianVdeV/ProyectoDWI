@@ -11,20 +11,19 @@
     </h:head>
     <h:body style="padding-top: 60px; background-color: #add;">
         <b:container>
-            <p:growl id="growl" sticky="true" showDetail="true"/>
             <h:form styleClass="form-signin" prependId="false">
-                <h2 class="form-signin-heading">Ingrese sus datos</h2>
-                <b:inputText id="email" placeholder="Email address" value="#{login.correo}">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <b:inputText id="email" placeholder="Email address" >
                     <f:facet name="prepend">
                         <b:icon name="user" />
                     </f:facet>
                 </b:inputText>
-                <b:inputText id="password" placeholder="Password" type="password" value="#{login.contra}">
+                <b:inputText id="password" placeholder="Password" type="password">
                     <f:facet name="prepend">
                         <b:iconAwesome name="key" />
                     </f:facet>
                 </b:inputText>
-                <b:commandButton look="primary btn-block" action="#{login.controlLogin()}" value="Sign In" icon="log-in" size="lg"/>
+                <b:commandButton look="primary btn-block" action="/Vistas/dashboard" value="Sign In" icon="log-in" size="lg"/>
             </h:form>
         </b:container>
         <style type="text/css">

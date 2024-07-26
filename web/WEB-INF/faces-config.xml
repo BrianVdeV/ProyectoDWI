@@ -33,4 +33,9 @@
         <managed-bean-class>DAO.DAOestudiante</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>beanDocente</managed-bean-name>
+        <managed-bean-class>DAO.DAOdocente</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>
